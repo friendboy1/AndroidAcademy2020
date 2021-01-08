@@ -12,9 +12,8 @@
         <ImageView
             android:id="@+id/background"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="298dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +50,7 @@
             android:layout_marginTop="48dp"
             android:drawablePadding="8dp"
             android:padding="8dp"
-            android:text="@string/back"
+            android:text="@string/movie_details_back"
             android:textAlignment="center"
             android:textColor="@color/gray"
             android:textSize="12sp"
@@ -65,20 +64,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:maxLines="2"
-            android:text="@string/title"
+            android:text="@string/movie_details_title"
             android:textColor="@color/whiteDark"
             android:textSize="40sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/guideline"
+            app:layout_constraintBottom_toBottomOf="@+id/background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
+            app:layout_constraintTop_toBottomOf="@+id/background" />
 
         <TextView
             android:id="@+id/tv_uptitle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:text="@string/age"
+            android:text="@string/movie_details_age"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -87,10 +86,10 @@
 
         <TextView
             android:id="@+id/tv_genre"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:text="@string/genre"
+            android:text="@string/movie_details_genre"
             android:textAlignment="center"
             android:textColor="@color/pinkLight"
             android:textSize="14sp"
@@ -103,8 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="@string/reviews"
-            android:textAlignment="center"
+            android:text="@string/movie_details_reviews"
             android:textAllCaps="true"
             android:textColor="@color/grayDark"
             android:textSize="14sp"
@@ -114,10 +112,10 @@
 
         <TextView
             android:id="@+id/tv_story_line"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/storyline"
+            android:text="@string/movie_details_storyline"
             android:textColor="@color/whiteDark"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -130,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="4dp"
-            android:text="@string/story_description"
+            android:text="@string/movie_details_story_description"
             android:textAlignment="textStart"
             android:textColor="@color/grayLight"
             android:textSize="14sp"
@@ -143,7 +141,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/cast"
+            android:text="@string/movie_details_cast"
             android:textColor="@color/whiteDark"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -156,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:maxLines="2"
-            android:text="@string/actor1_name"
+            android:text="@string/movie_details_actor1_name"
             android:textColor="@color/whiteActor"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -170,7 +168,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:maxLines="2"
-            android:text="@string/actor2_name"
+            android:text="@string/movie_details_actor2_name"
             android:textColor="@color/whiteActor"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -184,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:maxLines="2"
-            android:text="@string/actor3_name"
+            android:text="@string/movie_details_actor3_name"
             android:textColor="@color/whiteActor"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -198,7 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:maxLines="2"
-            android:text="@string/actor4_name"
+            android:text="@string/movie_details_actor4_name"
             android:textColor="@color/whiteActor"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -291,13 +289,6 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/img_actor4" />
         </androidx.cardview.widget.CardView>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="298dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

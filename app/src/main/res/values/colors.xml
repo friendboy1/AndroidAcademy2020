@@ -13,4 +13,6 @@
     <color name="grayLight">#BFFFFFFF</color>
     <color name="whiteActor">#D8D8D8</color>
     <color name="background">#191926</color>
+    <color name="gradientEnd">#FF191926</color>
+    <color name="gradientStart">#00191926</color>
 </resources>
