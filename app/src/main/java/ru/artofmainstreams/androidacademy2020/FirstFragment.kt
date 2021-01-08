@@ -1,5 +1,6 @@
 package ru.artofmainstreams.androidacademy2020
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,7 +26,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            this.startActivity(Intent(requireContext(), MovieDetailsActivity::class.java))
         }
     }
 }
