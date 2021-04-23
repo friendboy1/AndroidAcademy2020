@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView android:id="@+id/cv_movie1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="170dp"
+    android:layout_height="296dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="30dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/iv_combined_shape"
+    app:strokeColor="@color/borderColor"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/iv_movie"
+            android:layout_width="0dp"
+            android:layout_height="246dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_movie" />
+
+        <View
+            android:id="@+id/background_gradient"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/gradient_linear"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_movie"
+            app:layout_constraintEnd_toEndOf="@+id/iv_movie"
+            app:layout_constraintStart_toStartOf="@+id/iv_movie"
+            app:layout_constraintTop_toTopOf="@+id/iv_movie" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="6dp"
+            android:progressBackgroundTint="@color/grayDark"
+            android:progressTint="@color/pink"
+            android:rating="4"
+            android:scaleX="0.65"
+            android:scaleY="0.65"
+            android:secondaryProgressTint="@color/black"
+            android:transformPivotX="0dp"
+            app:layout_constraintStart_toStartOf="@+id/iv_movie"
+            app:layout_constraintTop_toTopOf="@+id/tv_reviews" />
+
+        <TextView
+            android:id="@+id/tv_duration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/movie_details_list_duration"
+            android:textAllCaps="true"
+            android:textColor="@color/durationColor"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/movie_details_title"
+            android:textColor="@color/whiteDark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_movie" />
+
+        <TextView
+            android:id="@+id/tv_reviews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="60dp"
+            android:text="@string/movie_details_reviews"
+            android:textAllCaps="true"
+            android:textColor="@color/grayDark"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_movie"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="6dp"
+            android:text="@string/movie_details_genre"
+            android:textAlignment="center"
+            android:textColor="@color/pinkLight"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_reviews"
+            app:layout_constraintStart_toStartOf="@+id/iv_movie" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_pg"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_pg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:gravity="center"
+                android:text="@string/movie_details_age"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

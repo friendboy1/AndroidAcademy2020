@@ -11,7 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="movie_details_back">Back</string>
-    <string name="movie_details_title">Avengers:\nEnd game</string>
+    <string name="movie_details_title">Avengers: End game</string>
     <string name="movie_details_age">13+</string>
     <string name="movie_details_genre">Action, Adventure, Fantasy</string>
     <string name="movie_details_reviews">125 reviews</string>
@@ -22,4 +22,6 @@
     <string name="movie_details_actor2_name">Chris Evans</string>
     <string name="movie_details_actor3_name">Mark Ruffalo</string>
     <string name="movie_details_actor4_name">Chris Hemsworth</string>
+
+    <string name="movie_details_list_duration">137 min</string>
 </resources>
