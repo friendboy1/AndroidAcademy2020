@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -148,147 +149,20 @@
             app:layout_constraintStart_toStartOf="@+id/tv_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_story_line_description" />
 
-        <TextView
-            android:id="@+id/tv_actor1_name"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_actors"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:maxLines="2"
-            android:text="@string/movie_details_actor1_name"
-            android:textColor="@color/whiteActor"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/cv_actor1"
-            app:layout_constraintStart_toStartOf="@+id/cv_actor1"
-            app:layout_constraintTop_toBottomOf="@+id/cv_actor1" />
-
-        <TextView
-            android:id="@+id/tv_actor2_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:maxLines="2"
-            android:text="@string/movie_details_actor2_name"
-            android:textColor="@color/whiteActor"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/cv_actor2"
-            app:layout_constraintStart_toStartOf="@+id/cv_actor2"
-            app:layout_constraintTop_toBottomOf="@+id/cv_actor2" />
-
-        <TextView
-            android:id="@+id/tv_actor3_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:maxLines="2"
-            android:text="@string/movie_details_actor3_name"
-            android:textColor="@color/whiteActor"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/cv_actor3"
-            app:layout_constraintStart_toStartOf="@+id/cv_actor3"
-            app:layout_constraintTop_toBottomOf="@+id/cv_actor3" />
-
-        <TextView
-            android:id="@+id/tv_actor4_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:maxLines="2"
-            android:text="@string/movie_details_actor4_name"
-            android:textColor="@color/whiteActor"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/cv_actor4"
-            app:layout_constraintStart_toStartOf="@+id/cv_actor4"
-            app:layout_constraintTop_toBottomOf="@+id/cv_actor4" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_actor1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             android:layout_marginTop="7dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/cv_actor2"
-            app:layout_constraintStart_toStartOf="@+id/tv_cast"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cast">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/img_actor1" />
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_actor2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="7dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/cv_actor3"
-            app:layout_constraintStart_toEndOf="@+id/cv_actor1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cast">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/img_actor2" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_actor3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="7dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/cv_actor4"
-            app:layout_constraintStart_toEndOf="@+id/cv_actor2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cast">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/img_actor3" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_actor4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="7dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="0dp"
-            app:layout_constraintDimensionRatio="1:1"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cast"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cv_actor3"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cast">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/img_actor4" />
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintStart_toStartOf="@+id/tv_cast"
+            tools:itemCount="4"
+            tools:listitem="@layout/view_holder_actor" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
