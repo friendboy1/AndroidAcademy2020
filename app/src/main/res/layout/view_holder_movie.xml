@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView android:id="@+id/cv_movie1"
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="170dp"
     android:layout_height="296dp"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="30dp"
-    android:orientation="vertical"
     app:cardCornerRadius="8dp"
     app:cardElevation="0dp"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/iv_combined_shape"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
     app:strokeColor="@color/borderColor"
     app:strokeWidth="1dp">
 
@@ -28,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_movie" />
+            app:srcCompat="@drawable/img_avengers" />
 
         <View
             android:id="@+id/background_gradient"
@@ -41,7 +40,7 @@
             app:layout_constraintTop_toTopOf="@+id/iv_movie" />
 
         <RatingBar
-            android:id="@+id/ratingBar"
+            android:id="@+id/rating_bar"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +55,17 @@
             android:transformPivotX="0dp"
             app:layout_constraintStart_toStartOf="@+id/iv_movie"
             app:layout_constraintTop_toTopOf="@+id/tv_reviews" />
+
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_pg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cv_pg"
+            app:srcCompat="@drawable/ic_like" />
 
         <TextView
             android:id="@+id/tv_duration"
@@ -74,7 +84,7 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -83,11 +93,12 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_movie" />
 
         <TextView
             android:id="@+id/tv_reviews"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="60dp"
