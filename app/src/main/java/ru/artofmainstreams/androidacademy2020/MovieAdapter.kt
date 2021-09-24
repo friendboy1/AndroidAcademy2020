@@ -9,7 +9,10 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ru.artofmainstreams.androidacademy2020.data.models.Movie
 
 /**
@@ -17,42 +20,71 @@ import ru.artofmainstreams.androidacademy2020.data.models.Movie
  *
  * @author Andrei Khromov on 24.04.2021
  */
-class MovieAdapter(private val movies: List<Movie>, private val clickListener: OnClickListener?) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val onClickCard: (item: Movie) -> Unit) :
+    ListAdapter<Movie, MovieAdapter.ViewHolder>(DiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder = MovieViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movie, parent, false)
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.view_holder_movie, parent, false)
+        )
+    }
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movies[position])
-        holder.itemView.setOnClickListener {
-            clickListener?.onClick()
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item, onClickCard)
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val movieImage: ImageView = itemView.findViewById(R.id.movie_image)
+        private val likeImage: ImageView = itemView.findViewById(R.id.movie_like_image)
+        private val pgText: TextView = itemView.findViewById(R.id.pg_text)
+        private val genreText: TextView = itemView.findViewById(R.id.film_genre_text)
+        private val ratingBar: RatingBar = itemView.findViewById(R.id.rating_bar)
+        private val reviewsText: TextView = itemView.findViewById(R.id.movie_reviews_count_text)
+        private val titleText: TextView = itemView.findViewById(R.id.film_name_text)
+        private val movieLenText: TextView = itemView.findViewById(R.id.film_time_text)
+
+        fun bind(item: Movie, onClickCard: (item: Movie) -> Unit) {
+            Glide.with(itemView).load(item.imageUrl).into(movieImage)
+
+            val context = itemView.context
+            pgText.text =
+                context.getString(R.string.movies_list_allowed_age_template, item.pgAge)
+            genreText.text = item.genres.joinToString { it.name }
+            reviewsText.text =
+                context.getString(R.string.movies_list_reviews_template, item.reviewCount)
+            titleText.text = item.title
+            movieLenText.text = context.getString(R.string.movies_list_film_time, item.runningTime)
+
+            val likeColor = if (item.isLiked) {
+                R.color.pinkLight
+            } else {
+                R.color.white
+            }
+            ImageViewCompat.setImageTintList(
+                likeImage, ColorStateList.valueOf(
+                    ContextCompat.getColor(likeImage.context, likeColor)
+                )
+            )
+
+            ratingBar.rating = (item.rating / 2).toFloat()
+
+            itemView.setOnClickListener {
+                onClickCard(item)
+            }
         }
     }
 
-    override fun getItemCount(): Int = movies.size
+    class DiffCallback : DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val like: ImageView = itemView.findViewById(R.id.iv_like)
-        private val name: TextView = itemView.findViewById(R.id.tv_title)
-        private val pg: TextView = itemView.findViewById(R.id.tv_pg)
-        private val genre: TextView = itemView.findViewById(R.id.tv_genre)
-        private val reviews: TextView = itemView.findViewById(R.id.tv_reviews)
-        private val duration: TextView = itemView.findViewById(R.id.tv_duration)
-        private val rating: RatingBar = itemView.findViewById(R.id.rating_bar)
-        private val image: ImageView = itemView.findViewById(R.id.iv_movie)
-
-        fun bind(movie: Movie) {
-            val tint = if (movie.like) R.color.pink else R.color.grayLight
-            ImageViewCompat.setImageTintList(like,
-                ColorStateList.valueOf(ContextCompat.getColor(itemView.context, tint)));
-            name.text = movie.name
-            pg.text = movie.pg
-            genre.text = movie.genre
-            reviews.text = String.format(itemView.resources.getString(R.string.movie_reviews), movie.reviews)
-            duration.text = String.format(itemView.resources.getString(R.string.movie_duration), movie.duration)
-            rating.rating = movie.rating
-            image.setImageResource(movie.image)
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem == newItem
         }
     }
+
 }

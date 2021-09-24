@@ -11,13 +11,15 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="movie_reviews">%d reviews</string>
-    <string name="movie_duration">%d min</string>
+    <string name="movies_list_film_time">%d min</string>
+
+    <string name="error_movie_not_found">Фильм не найден</string>
 
     <string name="movie_details_back">Back</string>
     <string name="movie_details_title">Avengers: End game</string>
-    <string name="movie_details_age">13+</string>
+    <string name="movies_list_allowed_age_template">%d+</string>
     <string name="movie_details_genre">Action, Adventure, Fantasy</string>
-    <string name="movie_details_reviews">125 reviews</string>
+    <string name="movies_list_reviews_template">%d reviews</string>
     <string name="movie_details_storyline">Storyline</string>
     <string name="movie_details_story_description">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
     <string name="movie_details_cast">Cast</string>

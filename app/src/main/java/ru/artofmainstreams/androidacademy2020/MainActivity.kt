@@ -1,34 +1,66 @@
 package ru.artofmainstreams.androidacademy2020
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+import ru.artofmainstreams.androidacademy2020.data.JsonMovieRepository
+import ru.artofmainstreams.androidacademy2020.data.MovieRepository
+import ru.artofmainstreams.androidacademy2020.data.models.Movie
+import ru.artofmainstreams.androidacademy2020.di.MovieRepositoryProvider
 
 /**
  * Главный экран приложения
  *
  * @author Andrei Khromov on 08.01.2021
  */
-class MainActivity : AppCompatActivity(), OnClickListener {
+class MainActivity : AppCompatActivity(),
+    MoviesListFragment.MoviesListItemClickListener,
+    MovieDetailsFragment.MovieDetailsBackClickListener,
+    MovieRepositoryProvider {
+
+    private val jsonMovieRepository = JsonMovieRepository(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .add(R.id.fragment_container, FragmentMoviesList())
-                .commit()
+            routeToMoviesList()
         }
     }
 
-    override fun onClick() {
+    override fun onMovieSelected(movie: Movie) {
+        routeToMovieDetails(movie)
+    }
+
+    override fun onMovieDeselected() {
+        routeBack()
+    }
+
+    private fun routeToMoviesList() {
         supportFragmentManager.beginTransaction()
-            .addToBackStack(null)
-            .add(R.id.fragment_container, FragmentMoviesDetails())
+            .replace(
+                R.id.fragment_container,
+                MoviesListFragment.create(),
+                MoviesListFragment::class.java.simpleName
+            )
+            .addToBackStack("trans:${MoviesListFragment::class.java.simpleName}")
             .commit()
     }
+
+    private fun routeToMovieDetails(movie: Movie) {
+        supportFragmentManager.beginTransaction()
+            .add(
+                R.id.fragment_container,
+                MovieDetailsFragment.create(movie.id),
+                MovieDetailsFragment::class.java.simpleName
+            )
+            .addToBackStack("trans:${MovieDetailsFragment::class.java.simpleName}")
+            .commit()
+    }
+
+    private fun routeBack() {
+        supportFragmentManager.popBackStack()
+    }
+
+    override fun provideMovieRepository(): MovieRepository = jsonMovieRepository
 }

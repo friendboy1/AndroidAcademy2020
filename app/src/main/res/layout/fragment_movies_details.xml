@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/background"
+            android:id="@+id/movie_logo_image"
             android:layout_width="0dp"
             android:layout_height="298dp"
             android:scaleType="centerCrop"
@@ -25,13 +25,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/gradient_linear"
-            app:layout_constraintBottom_toBottomOf="@+id/background"
-            app:layout_constraintEnd_toEndOf="@+id/background"
-            app:layout_constraintStart_toStartOf="@+id/background"
-            app:layout_constraintTop_toTopOf="@+id/background" />
+            app:layout_constraintBottom_toBottomOf="@+id/movie_logo_image"
+            app:layout_constraintEnd_toEndOf="@+id/movie_logo_image"
+            app:layout_constraintStart_toStartOf="@+id/movie_logo_image"
+            app:layout_constraintTop_toTopOf="@+id/movie_logo_image" />
 
         <RatingBar
-            android:id="@+id/ratingBar"
+            android:id="@+id/rating_bar"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,8 +40,8 @@
             android:progressTint="@color/pink"
             android:rating="4"
             android:secondaryProgressTint="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_genre" />
+            app:layout_constraintStart_toStartOf="@+id/film_name_text"
+            app:layout_constraintTop_toBottomOf="@+id/film_genre_text" />
 
         <TextView
             android:id="@+id/tv_back"
@@ -60,7 +60,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/film_name_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -69,24 +69,24 @@
             android:textColor="@color/whiteDark"
             android:textSize="40sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/background"
+            app:layout_constraintBottom_toBottomOf="@+id/movie_logo_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/background" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_logo_image" />
 
         <TextView
-            android:id="@+id/tv_uptitle"
+            android:id="@+id/movie_age_restrictions_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:text="@string/movie_details_age"
+            android:text="@string/movies_list_allowed_age_template"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_title"
-            app:layout_constraintStart_toStartOf="@+id/tv_title" />
+            app:layout_constraintBottom_toTopOf="@+id/film_name_text"
+            app:layout_constraintStart_toStartOf="@+id/film_name_text" />
 
         <TextView
-            android:id="@+id/tv_genre"
+            android:id="@+id/film_genre_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
@@ -94,22 +94,22 @@
             android:textAlignment="center"
             android:textColor="@color/pinkLight"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintStart_toStartOf="@+id/film_name_text"
+            app:layout_constraintTop_toBottomOf="@+id/film_name_text" />
 
         <TextView
-            android:id="@+id/tv_reviews"
+            android:id="@+id/movie_reviews_count_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="@string/movie_details_reviews"
+            android:text="@string/movies_list_reviews_template"
             android:textAllCaps="true"
             android:textColor="@color/grayDark"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/ratingBar"
-            app:layout_constraintTop_toBottomOf="@+id/tv_genre" />
+            app:layout_constraintStart_toEndOf="@+id/rating_bar"
+            app:layout_constraintTop_toBottomOf="@+id/film_genre_text" />
 
         <TextView
             android:id="@+id/tv_story_line"
@@ -120,11 +120,11 @@
             android:textColor="@color/whiteDark"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_reviews" />
+            app:layout_constraintStart_toStartOf="@+id/film_name_text"
+            app:layout_constraintTop_toBottomOf="@+id/movie_reviews_count_text" />
 
         <TextView
-            android:id="@+id/tv_story_line_description"
+            android:id="@+id/movie_storyline_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -134,7 +134,7 @@
             android:textColor="@color/grayLight"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="@+id/film_name_text"
             app:layout_constraintTop_toBottomOf="@+id/tv_story_line" />
 
         <TextView
@@ -146,8 +146,8 @@
             android:textColor="@color/whiteDark"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_story_line_description" />
+            app:layout_constraintStart_toStartOf="@+id/film_name_text"
+            app:layout_constraintTop_toBottomOf="@+id/movie_storyline_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_actors"
