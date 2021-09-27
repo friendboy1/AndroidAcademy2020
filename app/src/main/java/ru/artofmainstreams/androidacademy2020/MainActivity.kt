@@ -6,6 +6,8 @@ import ru.artofmainstreams.androidacademy2020.data.JsonMovieRepository
 import ru.artofmainstreams.androidacademy2020.data.MovieRepository
 import ru.artofmainstreams.androidacademy2020.data.models.Movie
 import ru.artofmainstreams.androidacademy2020.di.MovieRepositoryProvider
+import ru.artofmainstreams.androidacademy2020.moviedetails.MovieDetailsFragment
+import ru.artofmainstreams.androidacademy2020.movies.MovieListFragment
 
 /**
  * Главный экран приложения
@@ -13,7 +15,7 @@ import ru.artofmainstreams.androidacademy2020.di.MovieRepositoryProvider
  * @author Andrei Khromov on 08.01.2021
  */
 class MainActivity : AppCompatActivity(),
-    MoviesListFragment.MoviesListItemClickListener,
+    MovieListFragment.MoviesListItemClickListener,
     MovieDetailsFragment.MovieDetailsBackClickListener,
     MovieRepositoryProvider {
 
@@ -40,10 +42,10 @@ class MainActivity : AppCompatActivity(),
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.fragment_container,
-                MoviesListFragment.create(),
-                MoviesListFragment::class.java.simpleName
+                MovieListFragment.create(),
+                MovieListFragment::class.java.simpleName
             )
-            .addToBackStack("trans:${MoviesListFragment::class.java.simpleName}")
+            .addToBackStack("trans:${MovieListFragment::class.java.simpleName}")
             .commit()
     }
 

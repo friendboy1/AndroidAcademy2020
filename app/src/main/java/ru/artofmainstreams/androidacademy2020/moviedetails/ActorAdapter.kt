@@ -1,4 +1,4 @@
-package ru.artofmainstreams.androidacademy2020
+package ru.artofmainstreams.androidacademy2020.moviedetails
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import ru.artofmainstreams.androidacademy2020.R
 import ru.artofmainstreams.androidacademy2020.data.models.Actor
 
 /**

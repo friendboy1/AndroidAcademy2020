@@ -1,4 +1,4 @@
-package ru.artofmainstreams.androidacademy2020
+package ru.artofmainstreams.androidacademy2020.moviedetails
 
 import android.content.Context
 import android.os.Bundle
@@ -11,13 +11,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
+import ru.artofmainstreams.androidacademy2020.R
 import ru.artofmainstreams.androidacademy2020.data.models.Movie
 import ru.artofmainstreams.androidacademy2020.di.MovieRepositoryProvider
+import ru.artofmainstreams.androidacademy2020.movies.MovieListViewModel
+import ru.artofmainstreams.androidacademy2020.movies.MovieListViewModelFactory
 
 /**
  * Фрагмент с отображением детальной информацией о фильме
@@ -27,6 +31,8 @@ import ru.artofmainstreams.androidacademy2020.di.MovieRepositoryProvider
 class MovieDetailsFragment : Fragment() {
 
     private var listener: MovieDetailsBackClickListener? = null
+
+    private lateinit var viewModel: MovieDetailsViewModel
 
     private lateinit var recycler: RecyclerView
     private lateinit var actorAdapter: ActorAdapter
@@ -38,7 +44,11 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
         inflater.inflate(R.layout.fragment_movies_details, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,16 +64,28 @@ class MovieDetailsFragment : Fragment() {
         view.findViewById<TextView>(R.id.tv_back).setOnClickListener {
             listener?.onMovieDeselected()
         }
-        lifecycleScope.launch {
-            val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
-            val movie = repository.loadMovie(movieId)
 
-            if (movie != null) {
-                bindUI(movie)
+        viewModel = ViewModelProvider(
+            this,
+            MovieDetailsViewModelFactory(
+                (requireActivity() as MovieRepositoryProvider)
+                    .provideMovieRepository()
+            )
+        ).get(MovieDetailsViewModel::class.java)
+        lifecycleScope.launch {
+            viewModel.load(movieId)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.movie.observe(this, {
+            if (it != null) {
+                bindUI(it)
             } else {
                 showMovieNotFoundError()
             }
-        }
+        })
     }
 
     private fun showMovieNotFoundError() {
